@@ -52,7 +52,7 @@ public class BestScore {
         printArray(result);
 
         boolean passed = arraysEqual(result, expected);
-        System.out.println("\nResult: " + (passed ? "PASS ✓" : "FAIL ❌"));
+        System.out.println("\nResult: " + (passed ? "PASS" : "FAIL"));
 
         if (!passed) {
             System.out.println("Error");
