@@ -1,5 +1,9 @@
 package arrays.LeetCode;
 
+/* You are given two integer arrays. Write a program to check 
+ * if they are permutations of each other.
+ */
+
 public class Permutations {
     public boolean permutations(int[] array1, int[] array2) {
         if (array1.length != array2.length) {
