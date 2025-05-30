@@ -1,5 +1,3 @@
-package arrays.LeetCode;
-
 /* You are given two integer arrays. Write a program to check 
  * if they are permutations of each other.
  */

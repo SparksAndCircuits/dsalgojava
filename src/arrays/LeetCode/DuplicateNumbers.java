@@ -1,5 +1,3 @@
-package arrays.LeetCode;
-
 import java.util.Arrays;
 
 public class DuplicateNumbers {

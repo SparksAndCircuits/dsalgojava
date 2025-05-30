@@ -1,5 +1,3 @@
-package arrays.LeetCode;
-
 /* How to find the max product of two integers in 
  * the array where all elements are positive.
  */

@@ -1,5 +1,3 @@
-package arrays.LeetCode;
-
 /* Write a program to check if an array is unique or not */
 
 public class ContainsDuplicates {

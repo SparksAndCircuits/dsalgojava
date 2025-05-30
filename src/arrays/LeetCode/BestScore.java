@@ -1,5 +1,3 @@
-package arrays.LeetCode;
-
 /* Given an array, write a function to get the first and second best scores
  * from the array and return it in a new array. The array may contain duplicates.
  */
