@@ -18,10 +18,8 @@ public class AvgTemp {
         System.out.println();
         System.out.println("The average temperature is: " + average);
 
-        int above = 0;
         for (int i = 0; i < temps.length; i++) {
             if (temps[i] > average) {
-                above++;
             }
         }
     }
