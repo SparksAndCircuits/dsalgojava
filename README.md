@@ -4,7 +4,7 @@ Welcome to my personal learning repository for Data Structures and Algorithms im
 #About This Repository
 This repository contains my impelentations, notes, and pratice problems as I work through various data structures and algorithms. Each implementation includes comments and explanations to reinforce my understanding.
 
-#Learning Goals
+Learning Goals
 - Master fundamentals datastructures and their operations
 - Understand time and space complexity analysis
 - Practice algorithm problem-solving techniques
