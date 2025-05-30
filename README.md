@@ -1,4 +1,4 @@
-# dsalgojava
+# Data Structures and Algorithms in Java
 Welcome to my personal learning repository for Data Structures and Algorithms implemented in Java! This repository severs as my documentation and practice grounds as I study fundamental computer Science concepts.
 
 #About This Repository
