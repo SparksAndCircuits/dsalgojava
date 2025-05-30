@@ -12,3 +12,35 @@ Learning Goals
 - Document my learning journey for future reference
 
   I am using Visual studio code and JDK 22
+Topics covered:
+Data Structures
+
+ Arrays and Dynamic Arrays
+ Linked Lists (Singly, Doubly, Circular)
+ Stacks and Queues
+ Hash Tables/Hash Maps
+ Trees (Binary Trees, BST, AVL, Red-Black)
+ Heaps (Min Heap, Max Heap)
+ Graphs (Adjacency List, Adjacency Matrix)
+ Tries
+ Disjoint Set (Union-Find)
+
+Algorithms
+
+ Sorting Algorithms (Bubble, Selection, Insertion, Merge, Quick, Heap)
+ Searching Algorithms (Linear, Binary, DFS, BFS)
+ Dynamic Programming
+ Greedy Algorithms
+ Divide and Conquer
+ Backtracking
+ Graph Algorithms 
+
+ Progress Tracking
+ I regularly update this repository with new implementations and improvements. 
+
+ While this is primarily a personal learning repository, I welcome:
+
+Bug fixes and corrections
+Suggestions for improvements
+Additional test cases
+Alternative implementations
