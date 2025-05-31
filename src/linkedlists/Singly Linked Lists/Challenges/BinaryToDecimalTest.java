@@ -21,15 +21,15 @@ public class BinaryToDecimalTest {
         return head;
     }
 
-    private int calculateExpectedDecimal(int[] binaryDigits) {
-        int result = 0;
+    // private int calculateExpectedDecimal(int[] binaryDigits) {
+    // int result = 0;
 
-        for (int digit : binaryDigits) {
-            result = result * 2 + digit;
-        }
+    // for (int digit : binaryDigits) {
+    // result = result * 2 + digit;
+    // }
 
-        return result;
-    }
+    // return result;
+    // }
 
     private void printBinary(int[] binary) {
         System.out.println("Binary: ");
