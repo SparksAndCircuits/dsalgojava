@@ -52,7 +52,14 @@ public class LinkedList {
         return result;
     }
 
+    void clear() {
+        head = null;
+        tail = null;
+        size = 0;
+    }
+
     void createFromArray(int[] values) {
+        clear();
         for (int value : values) {
             add(value);
         }

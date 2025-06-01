@@ -53,6 +53,8 @@ public class Partition {
         return LL;
     }
 
+
+
     boolean verifyPartition(LinkedList LL, int x) {
         Node current = LL.head;
         boolean foundGreaterEqual = false;
