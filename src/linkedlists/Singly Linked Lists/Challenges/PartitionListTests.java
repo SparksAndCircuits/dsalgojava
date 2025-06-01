@@ -5,7 +5,7 @@ public class PartitionListTests {
         try {
             PartitionList partitionList = new PartitionList();
             partitionList.head = null;
-            partitionList.PartitionList(3);
+            partitionList.partitionList(3);
             return partitionList.head == null;
         } catch (Exception e) {
             System.out.println("Exception in TestEmptyList: " + e.getMessage());
@@ -18,7 +18,7 @@ public class PartitionListTests {
         try {
             PartitionList partitionList = new PartitionList();
             partitionList.head = new Node(2);
-            partitionList.PartitionList(3);
+            partitionList.partitionList(3);
             return partitionList.head != null && partitionList.head.value == 2 && partitionList.head.next == null;
         } catch (Exception e) {
             System.out.println("Exception in testSingleNodeLessThan x: " + e.getMessage());
@@ -32,7 +32,7 @@ public class PartitionListTests {
             PartitionList partitionList = new PartitionList();
             partitionList.head = new Node(5);
 
-            partitionList.PartitionList(3);
+            partitionList.partitionList(3);
 
             return partitionList.head != null &&
                     partitionList.head.value == 5 &&
@@ -49,7 +49,7 @@ public class PartitionListTests {
             PartitionList partitionList = new PartitionList();
             partitionList.head = new Node(3);
 
-            partitionList.PartitionList(3);
+            partitionList.partitionList(3);
 
             return partitionList.head != null &&
                     partitionList.head.value == 3 &&
@@ -69,7 +69,7 @@ public class PartitionListTests {
             // Create expected result
             Node expected = createLinkedList(new int[] { 1, 2, 2, 1 });
 
-            partitionList.PartitionList(5);
+            partitionList.partitionList(5);
 
             return listsEqual(partitionList.head, expected);
         } catch (Exception e) {
@@ -86,7 +86,7 @@ public class PartitionListTests {
 
             Node expected = createLinkedList(new int[] { 5, 6, 7, 5 });
 
-            partitionList.PartitionList(5);
+            partitionList.partitionList(5);
 
             return listsEqual(partitionList.head, expected);
         } catch (Exception e) {
@@ -102,7 +102,7 @@ public class PartitionListTests {
             Node original = createLinkedList(new int[] { 1, 4, 3, 2, 5, 2 });
             partitionList.head = copyList(original);
 
-            partitionList.PartitionList(3);
+            partitionList.partitionList(3);
 
             // Check if partition is correct and order is preserved
             return isValidPartition(partitionList.head, 3) &&
@@ -122,7 +122,7 @@ public class PartitionListTests {
 
             Node expected = createLinkedList(new int[] { 1, 2, 2, 3, 4, 5 });
 
-            partitionList.PartitionList(3);
+            partitionList.partitionList(3);
 
             return listsEqual(partitionList.head, expected);
         } catch (Exception e) {
@@ -138,7 +138,7 @@ public class PartitionListTests {
             Node original = createLinkedList(new int[] { 5, 4, 3, 2, 1 });
             partitionList.head = copyList(original);
 
-            partitionList.PartitionList(3);
+            partitionList.partitionList(3);
 
             return isValidPartition(partitionList.head, 3) &&
                     hasCorrectRelativeOrder(original, partitionList.head, 3);
@@ -155,7 +155,7 @@ public class PartitionListTests {
             Node original = createLinkedList(new int[] { 1, 5, 2, 4, 3, 6 });
             partitionList.head = copyList(original);
 
-            partitionList.PartitionList(4);
+            partitionList.partitionList(4);
 
             return isValidPartition(partitionList.head, 4) &&
                     hasCorrectRelativeOrder(original, partitionList.head, 4);
@@ -172,7 +172,7 @@ public class PartitionListTests {
             Node original = createLinkedList(new int[] { 3, 1, 3, 4, 3, 2, 3 });
             partitionList.head = copyList(original);
 
-            partitionList.PartitionList(3);
+            partitionList.partitionList(3);
 
             return isValidPartition(partitionList.head, 3) &&
                     hasCorrectRelativeOrder(original, partitionList.head, 3);
@@ -189,7 +189,7 @@ public class PartitionListTests {
             Node original = createLinkedList(new int[] { -1, 3, -2, 1, 0, -3 });
             partitionList.head = copyList(original);
 
-            partitionList.PartitionList(0);
+            partitionList.partitionList(0);
 
             return isValidPartition(partitionList.head, 0) &&
                     hasCorrectRelativeOrder(original, partitionList.head, 0);
@@ -214,7 +214,7 @@ public class PartitionListTests {
             Node original = createLinkedList(largeArray);
             partitionList.head = copyList(original);
 
-            partitionList.PartitionList(6);
+            partitionList.partitionList(6);
 
             return isValidPartition(partitionList.head, 6) &&
                     hasCorrectRelativeOrder(original, partitionList.head, 6);
@@ -231,7 +231,7 @@ public class PartitionListTests {
             Node original = createLinkedList(new int[] { 2, 8, 1, 9, 4, 7, 3, 6, 5 });
             partitionList.head = copyList(original);
 
-            partitionList.PartitionList(5);
+            partitionList.partitionList(5);
 
             return isValidPartition(partitionList.head, 5) &&
                     hasCorrectRelativeOrder(original, partitionList.head, 5);

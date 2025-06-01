@@ -9,7 +9,7 @@
 public class PartitionList {
     Node head;
 
-    public void PartitionList(int x) {
+    public void partitionList(int x) {
         if (head == null) {
             return;
         }
