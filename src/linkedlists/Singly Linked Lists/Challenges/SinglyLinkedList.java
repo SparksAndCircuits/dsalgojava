@@ -1,7 +1,8 @@
 public class SinglyLinkedList {
-    private Node head;
-    private Node tail;
+    Node head;
+    Node tail;
     private int length;
+    public int size;
 
     // This creates the LinkedList
     public SinglyLinkedList(int value) {
