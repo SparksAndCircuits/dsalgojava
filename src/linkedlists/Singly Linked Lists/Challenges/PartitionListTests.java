@@ -26,7 +26,7 @@ public class PartitionListTests {
         }
     }
 
-    // Test 3: Single node greater than x
+    // Test 3:
     private static boolean testSingleNodeGreaterThanX() {
         try {
             PartitionList partitionList = new PartitionList();
@@ -43,7 +43,7 @@ public class PartitionListTests {
         }
     }
 
-    // Test 4: Single node equal to x
+    // Test 4:
     private static boolean testSingleNodeEqualToX() {
         try {
             PartitionList partitionList = new PartitionList();
@@ -51,22 +51,19 @@ public class PartitionListTests {
 
             partitionList.partitionList(3);
 
-            return partitionList.head != null &&
-                    partitionList.head.value == 3 &&
-                    partitionList.head.next == null;
+            return partitionList.head != null && partitionList.head.value == 3 && partitionList.head.next == null;
         } catch (Exception e) {
             System.out.println("Exception in testSingleNodeEqualToX: " + e.getMessage());
             return false;
         }
     }
 
-    // Test 5: All nodes less than x
+    // Test 5:
     private static boolean testAllNodesLessThanX() {
         try {
             PartitionList partitionList = new PartitionList();
             partitionList.head = createLinkedList(new int[] { 1, 2, 2, 1 });
 
-            // Create expected result
             Node expected = createLinkedList(new int[] { 1, 2, 2, 1 });
 
             partitionList.partitionList(5);
@@ -78,7 +75,7 @@ public class PartitionListTests {
         }
     }
 
-    // Test 6: All nodes greater than or equal to x
+    // Test 6:
     private static boolean testAllNodesGreaterOrEqualToX() {
         try {
             PartitionList partitionList = new PartitionList();
@@ -95,7 +92,7 @@ public class PartitionListTests {
         }
     }
 
-    // Test 7: Mixed values - basic case
+    // Test 7:
     private static boolean testMixedBasic() {
         try {
             PartitionList partitionList = new PartitionList();
@@ -103,18 +100,15 @@ public class PartitionListTests {
             partitionList.head = copyList(original);
 
             partitionList.partitionList(3);
-
-            // Check if partition is correct and order is preserved
             return isValidPartition(partitionList.head, 3) &&
                     hasCorrectRelativeOrder(original, partitionList.head, 3);
         } catch (Exception e) {
             System.out.println("Exception in testMixedBasic: " + e.getMessage());
-            // printList("Failed list: ", partitionList.head);
             return false;
         }
     }
 
-    // Test 8: Already partitioned list
+    // Test 8:
     private static boolean testAlreadyPartitioned() {
         try {
             PartitionList partitionList = new PartitionList();
@@ -131,7 +125,7 @@ public class PartitionListTests {
         }
     }
 
-    // Test 9: Reverse partitioned list
+    // Test 9:
     private static boolean testReversePartitioned() {
         try {
             PartitionList partitionList = new PartitionList();
@@ -148,7 +142,7 @@ public class PartitionListTests {
         }
     }
 
-    // Test 10: Alternating values
+    // Test 10:
     private static boolean testAlternatingValues() {
         try {
             PartitionList partitionList = new PartitionList();
@@ -165,7 +159,7 @@ public class PartitionListTests {
         }
     }
 
-    // Test 11: Duplicate values
+    // Test 11:
     private static boolean testDuplicateValues() {
         try {
             PartitionList partitionList = new PartitionList();
@@ -182,7 +176,7 @@ public class PartitionListTests {
         }
     }
 
-    // Test 12: Negative values
+    // Test 12:
     private static boolean testNegativeValues() {
         try {
             PartitionList partitionList = new PartitionList();
@@ -199,12 +193,10 @@ public class PartitionListTests {
         }
     }
 
-    // Test 13: Large list
+    // Test 13:
     private static boolean testLargeList() {
         try {
             PartitionList partitionList = new PartitionList();
-
-            // Create a large list: 1,10,2,9,3,8,4,7,5,6
             int[] largeArray = new int[10];
             for (int i = 0; i < 5; i++) {
                 largeArray[i * 2] = i + 1;
@@ -224,7 +216,7 @@ public class PartitionListTests {
         }
     }
 
-    // Test 14: Order preservation test
+    // Test 14:
     private static boolean testOrderPreservation() {
         try {
             PartitionList partitionList = new PartitionList();
@@ -241,7 +233,6 @@ public class PartitionListTests {
         }
     }
 
-    // Helper method to create a linked list from array
     private static Node createLinkedList(int[] values) {
         if (values.length == 0)
             return null;
@@ -257,7 +248,6 @@ public class PartitionListTests {
         return head;
     }
 
-    // Helper method to copy a linked list
     private static Node copyList(Node head) {
         if (head == null)
             return null;
@@ -275,7 +265,6 @@ public class PartitionListTests {
         return newHead;
     }
 
-    // Helper method to check if two linked lists are equal
     private static boolean listsEqual(Node list1, Node list2) {
         Node current1 = list1;
         Node current2 = list2;
@@ -287,13 +276,9 @@ public class PartitionListTests {
             current1 = current1.next;
             current2 = current2.next;
         }
-
-        // Both should be null if lists are equal
         return current1 == null && current2 == null;
     }
 
-    // Helper method to check if partition is valid (all values < x come before all
-    // values >= x)
     private static boolean isValidPartition(Node head, int x) {
         Node current = head;
         boolean foundGreaterOrEqual = false;
@@ -302,7 +287,6 @@ public class PartitionListTests {
             if (current.value >= x) {
                 foundGreaterOrEqual = true;
             } else if (foundGreaterOrEqual) {
-                // Found a value less than x after finding a value >= x
                 return false;
             }
             current = current.next;
@@ -310,9 +294,8 @@ public class PartitionListTests {
         return true;
     }
 
-    // Helper method to check if relative order is preserved within partitions
     private static boolean hasCorrectRelativeOrder(Node original, Node result, int x) {
-        // Extract nodes < x from original list
+
         Node originalLessHead = extractNodesLessThan(original, x);
         Node resultLessHead = extractNodesLessThan(result, x);
 
@@ -320,14 +303,12 @@ public class PartitionListTests {
             return false;
         }
 
-        // Extract nodes >= x from original list
         Node originalGreaterEqualHead = extractNodesGreaterOrEqual(original, x);
         Node resultGreaterEqualHead = extractNodesGreaterOrEqual(result, x);
 
         return listsEqual(originalGreaterEqualHead, resultGreaterEqualHead);
     }
 
-    // Helper method to extract nodes with values less than x
     private static Node extractNodesLessThan(Node head, int x) {
         Node dummyHead = new Node(0);
         Node current = dummyHead;
@@ -344,7 +325,6 @@ public class PartitionListTests {
         return dummyHead.next;
     }
 
-    // Helper method to extract nodes with values greater than or equal to x
     private static Node extractNodesGreaterOrEqual(Node head, int x) {
         Node dummyHead = new Node(0);
         Node current = dummyHead;
