@@ -144,6 +144,20 @@ public class SinglyLinkedList {
         return true;
     }
 
+    public void insert1(int value) {
+        if (head == null) {
+            head = new Node(value);
+            return;
+        }
+
+        Node current = head;
+        while (current.next != null) {
+            current = current.next;
+        }
+
+        current.next = new Node(value);
+    }
+
     public Node remove(int index) {
         if (index < 0 || index >= length) {
             return null;
