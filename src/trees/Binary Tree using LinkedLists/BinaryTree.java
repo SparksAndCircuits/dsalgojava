@@ -153,4 +153,10 @@ public class BinaryTree {
             queue.add(presentNode.right);
         }
     }
+
+    // Deletion of entire binary tree
+    public void deleteBinaryTree() {
+        root = null;
+        System.out.println("The binary tree has succefully been deleted.");
+    }
 }
