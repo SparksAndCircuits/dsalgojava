@@ -34,7 +34,7 @@ public class BinarySearchTree {
                     temp.right = newNode;
                     return true;
                 }
-                return false;
+                temp = temp.right;
             }
         }
     }
@@ -116,26 +116,40 @@ public class BinarySearchTree {
     }
 
     public void rInsert(int value) {
-        if (root == null) {
-            root = new Node(value);
-        }
         rInsert(root, value);
     }
 
-    //Recursive Bianry Search tree delete
-    private Node deleteNode(Node currentNode, int value){
-        if(currentNode == null){
+    private int minValue(Node currentNode) {
+        while (currentNode.left != null) {
+            currentNode = currentNode.left;
+        }
+        return currentNode.value;
+    }
+
+    // Recursive Bianry Search tree delete
+    private Node deleteNode(Node currentNode, int value) {
+        if (currentNode == null) {
             return null;
         }
 
-        if(value < currentNode.value){
+        if (value < currentNode.value) {
             currentNode.left = deleteNode(currentNode.left, value);
-        }else{
-            if(currentNode.left == null && currentNode.right == null){
+        } else if (value > currentNode.value) {
+            currentNode.right = deleteNode(currentNode.right, value);
+        } else {
+            if (currentNode.left == null && currentNode.right == null) {
                 currentNode = null;
-            }else if(currentNode.left == null){
+            } else if (currentNode.left == null) {
                 currentNode = currentNode.right;
-            }else if(currentNode)
+            } else if (currentNode.right == null) {
+                currentNode = currentNode.left;
+            } else {
+                int subTreeMin = minValue(currentNode.right);
+                currentNode.value = subTreeMin;
+                currentNode.right = deleteNode(currentNode.right, subTreeMin);
+            }
         }
+
+        return currentNode;
     }
 }
