@@ -28,7 +28,7 @@ public class BinarySearchTree {
         }
 
         inOrderHelper(node.left, result);
-        result.add(node.value);
+        result.addAll(node.value);
         inOrderHelper(node.right, result);
     }
 
