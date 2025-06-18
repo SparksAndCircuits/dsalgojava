@@ -109,89 +109,89 @@ public class InsertionSortTest {
         // Test Case 1: Empty array
         totalTests++;
         if (testEmptyArray()) {
-            System.out.println("✓ Test 1 PASSED: Empty array");
+            System.out.println("  Test 1 PASSED: Empty array");
             passedTests++;
         } else {
-            System.out.println("✗ Test 1 FAILED: Empty array");
+            System.out.println("  Test 1 FAILED: Empty array");
         }
 
         // Test Case 2: Single element array
         totalTests++;
         if (testSingleElement()) {
-            System.out.println("✓ Test 2 PASSED: Single element array");
+            System.out.println("  Test 2 PASSED: Single element array");
             passedTests++;
         } else {
-            System.out.println("✗ Test 2 FAILED: Single element array");
+            System.out.println("  Test 2 FAILED: Single element array");
         }
 
         // Test Case 3: Already sorted array
         totalTests++;
         if (testAlreadySorted()) {
-            System.out.println("✓ Test 3 PASSED: Already sorted array");
+            System.out.println("  Test 3 PASSED: Already sorted array");
             passedTests++;
         } else {
-            System.out.println("✗ Test 3 FAILED: Already sorted array");
+            System.out.println("  Test 3 FAILED: Already sorted array");
         }
 
         // Test Case 4: Reverse sorted array
         totalTests++;
         if (testReversedSorted()) {
-            System.out.println("✓ Test 4 PASSED: Reverse sorted array");
+            System.out.println("  Test 4 PASSED: Reverse sorted array");
             passedTests++;
         } else {
-            System.out.println("✗ Test 4 FAILED: Reverse sorted array");
+            System.out.println("  Test 4 FAILED: Reverse sorted array");
         }
 
         // Test Case 5: Random unsorted array
         totalTests++;
         if (testRandomArray()) {
-            System.out.println("✓ Test 5 PASSED: Random unsorted array");
+            System.out.println("  Test 5 PASSED: Random unsorted array");
             passedTests++;
         } else {
-            System.out.println("✗ Test 5 FAILED: Random unsorted array");
+            System.out.println("  Test 5 FAILED: Random unsorted array");
         }
 
         // Test Case 6: Array with duplicates
         totalTests++;
         if (testDuplicates()) {
-            System.out.println("✓ Test 6 PASSED: Array with duplicates");
+            System.out.println("  Test 6 PASSED: Array with duplicates");
             passedTests++;
         } else {
-            System.out.println("✗ Test 6 FAILED: Array with duplicates");
+            System.out.println("  Test 6 FAILED: Array with duplicates");
         }
 
         // Test Case 7: Array with negative numbers
         totalTests++;
         if (testNegativeNumbers()) {
-            System.out.println("✓ Test 7 PASSED: Array with negative numbers");
+            System.out.println("  Test 7 PASSED: Array with negative numbers");
             passedTests++;
         } else {
-            System.out.println("✗ Test 7 FAILED: Array with negative numbers");
+            System.out.println("  Test 7 FAILED: Array with negative numbers");
         }
 
         // Test Case 8: Large array
         totalTests++;
         if (testLargeArray()) {
-            System.out.println("✓ Test 8 PASSED: Large array");
+            System.out.println("  Test 8 PASSED: Large array");
             passedTests++;
         } else {
-            System.out.println("✗ Test 8 FAILED: Large array");
+            System.out.println("  Test 8 FAILED: Large array");
         }
 
         // Test Case 9: Two elements (edge case for the bug)
         totalTests++;
         if (testTwoElements()) {
-            System.out.println("✓ Test 9 PASSED: Two elements");
+            System.out.println("Test 9 PASSED: Two elements");
             passedTests++;
         } else {
-            System.out.println("✗ Test 9 FAILED: Two elements");
+            System.out.println("Test 9 FAILED: Two elements");
         }
 
         System.out.println("\n" + "=".repeat(40));
         System.out.println("Test Results: " + passedTests + "/" + totalTests + " tests passed");
 
         if (passedTests == totalTests) {
-            System.out.println("All tests passed! ✓");
+            System.out.println("All tests passed!  ");
         } else {
             System.out.println("Some tests failed. Please check your implementation.");
         }
