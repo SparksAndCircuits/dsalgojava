@@ -149,17 +149,17 @@ public class DoubleLinkedList {
         return true;
     }
 
-    //Remove method for a doubly linked list
-    public Node remove(int index){
-        if(index < 0 || index >= length){
+    // Remove method for a doubly linked list
+    public Node remove(int index) {
+        if (index < 0 || index >= length) {
             return null;
         }
 
-        if(index == 0){
+        if (index == 0) {
             return removeFirst();
         }
 
-        if(index == length - 1){
+        if (index == length - 1) {
             return removeLast();
         }
 
@@ -168,8 +168,48 @@ public class DoubleLinkedList {
         temp.prev.next = temp.next;
         temp.next = null;
         temp.prev = null;
-        
+
         length--;
         return temp;
+    }
+
+    public void traversal() {
+        if (head != null) {
+            Node tempNode = head;
+
+            for (int i = 0; i < length; i++) {
+                System.out.println(tempNode.value);
+
+                if (i != length - 1) {
+                    System.out.println(" -> ");
+                }
+
+                tempNode = tempNode.next;
+            }
+        } else {
+            System.out.println("The Double LinkedList does not exist.");
+        }
+
+        System.out.println("\n");
+    }
+
+    public void reverseTraversal() {
+        if (head != null) {
+            Node tempNode = tail;
+
+            for (int i = 0; i < length; i++) {
+                System.out.println(tempNode.value);
+
+                if (i != length - 1) {
+                    System.out.println(" <- ");
+                }
+
+                tempNode = tempNode.prev;
+            }
+        } else {
+            System.out.println("The doubly linked List does not exist.");
+        }
+
+        System.out.println("\n");
     }
 }
