@@ -22,6 +22,6 @@ public class WeightedNode implements Comparable<WeightedNode> {
 
     @Override
     public int compareTo(WeightedNode other) {
-        return Integer.compare(this.distance, other.distance);
+        return this.distance = other.distance;
     }
 }
