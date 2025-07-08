@@ -8,6 +8,7 @@ public class WeightedNode implements Comparable<WeightedNode> {
     public WeightedNode parents;
     public int distance;
     public int index;
+    public Object parent;
 
     public WeightedNode(String name, int index) {
         this.name = name;
