@@ -12,11 +12,6 @@ public class WeightedGraph {
         node.distance = 0;
         queue.addAll(nodeList);
 
-        for (WeightedNode n : nodeList) {
-            n.distance = Integer.MAX_VALUE;
-            n.parent = null;
-        }
-
         while (!queue.isEmpty()) {
             WeightedNode currentNode = queue.remove();
 
