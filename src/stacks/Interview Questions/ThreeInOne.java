@@ -36,14 +36,14 @@ public class ThreeInOne {
         return offset + size - 1;
     }
 
-    private void push(int stackNum, int value) {
-        if (isFull(stackNum)) {
-        System.out.println("The Stack is Full");
-        } else {
-        sizes[stackNum]++;
-        values[indexOfTop(stackNum)] = value;
-        }
-    }
+    // private void push(int stackNum, int value) {
+    //     if (isFull(stackNum)) {
+    //     System.out.println("The Stack is Full");
+    //     } else {
+    //     sizes[stackNum]++;
+    //     values[indexOfTop(stackNum)] = value;
+    //     }
+    // }
 
     public int pop(int stackNum) {
         if (isEmpty(stackNum)) {
