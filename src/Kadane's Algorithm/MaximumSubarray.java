@@ -166,12 +166,80 @@ public class MaximumSubarray {
         return maxSum;
     }
 
-    public static void main(String[] args) {
-        int[] array = { -2, 1, -3, 4, -1, 2, 1, -5, 4 };
+    // Variation 4: Maximum Subarray Sum with One Deletion Allowed
+    public static int maxSubarrayWithOneDeletion(int[] array) {
+        if (array == null || array.length == 0) {
+            throw new IllegalArgumentException("Array cannot be empty");
+        }
 
-        System.out.println("Array: " + java.util.Arrays.toString(array));
-        System.out.println("\nBrute Force Result: " + maxSubarrayBruteForce(array));
-        System.out.println("Kadane's Algorithm Result: " + maxSubArrayKadane(array));
-        System.out.println("\nWith Indices: " + maxSubarrayWithIndices(array));
+        int n = array.length;
+        int[] maxEndingHere = new int[n]; // Max sum ending at i without deletion.
+        int[] maxWithDeletion = new int[n]; // Max sum ending at i with one deletion.
+
+        maxEndingHere[0] = array[0];
+        maxWithDeletion[0] = 0;
+        int maxSum = array[0];
+
+        for (int i = 1; i < n; i++) {
+            // without deletion: standard Kadane's
+            maxEndingHere[i] = Math.max(array[i], maxEndingHere[i - 1] + array[i]);
+
+            // With deletion:either deletes current element or extend previous deletion
+            maxWithDeletion[i] = Math.max(maxSum, Math.max(maxEndingHere[i], maxWithDeletion[i]));
+
+            maxSum = Math.max(maxSum, Math.max(maxEndingHere[i], maxWithDeletion[i]));
+        }
+
+        return maxSum;
+    }
+
+    // Variation 5: Minimum Subarray sum(inverted problem)
+    public static int minSubArraySum(int[] array) {
+        if (array == null || array.length == 0) {
+            throw new IllegalArgumentException("Array cannot be empty");
+        }
+
+        int minSoFar = array[0];
+        int minEndingHere = array[0];
+
+        for (int i = 1; i < array.length; i++) {
+            minEndingHere = Math.min(array[i], minEndingHere + array[i]);
+            minSoFar = Math.min(minSoFar, minEndingHere);
+        }
+
+        return minSoFar;
+    }
+
+    public static void main(String[] args) {
+        System.out.println("=== STANDARD KADANE'S ===");
+        int[] arr1 = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
+        System.out.println("Array: " + java.util.Arrays.toString(arr1));
+        System.out.println("Max Subarray Sum: " + maxSubArrayKadane(arr1));
+        
+        System.out.println("\n=== CIRCULAR SUBARRAY ===");
+        int[] arr2 = {5, -3, 5};
+        System.out.println("Array: " + java.util.Arrays.toString(arr2));
+        System.out.println("Max Circular Sum: " + maxCircularSubarray(arr2));
+        
+        System.out.println("\n=== MAXIMUM PRODUCT ===");
+        int[] arr3 = {2, 3, -2, 4};
+        System.out.println("Array: " + java.util.Arrays.toString(arr3));
+        System.out.println("Max Product: " + maxProductSubarray(arr3));
+        
+        System.out.println("\n=== AT LEAST K ELEMENTS ===");
+        int[] arr4 = {1, 2, 3, -10, 5};
+        int k = 3;
+        System.out.println("Array: " + java.util.Arrays.toString(arr4));
+        System.out.println("Max Sum (at least " + k + " elements): " + maxSubarrayAtLeastK(arr4, k));
+        
+        System.out.println("\n=== WITH ONE DELETION ===");
+        int[] arr5 = {1, -2, 0, 3};
+        System.out.println("Array: " + java.util.Arrays.toString(arr5));
+        System.out.println("Max Sum (one deletion allowed): " + maxSubarrayWithOneDeletion(arr5));
+        
+        System.out.println("\n=== MINIMUM SUBARRAY ===");
+        int[] arr6 = {3, -4, 2, -3, -1, 7, -5};
+        System.out.println("Array: " + java.util.Arrays.toString(arr6));
+        System.out.println("Min Subarray Sum: " + minSubArraySum(arr6));
     }
 }
