@@ -42,6 +42,56 @@ public class SlidingWindowExample {
         return maxSum;
     }
 
+    // Example 2: Variable size window
+    // Problem: Find smallest subarray with sum >= target
+
+    public static int minSubarrayLen(int target, int[] array) {
+        System.out.println("\n--- Variable window: Smallest subarray with sum >= " + target + " ---");
+        System.out.println("Array: " + java.util.Arrays.toString(array));
+        System.out.println();
+
+        int minLen = Integer.MAX_VALUE;
+        int windowSum = 0;
+        int left = 0;
+        int step = 1;
+
+        for (int right = 0; right < array.length; right++) {
+            // Expand: Add element to window
+            windowSum += array[right];
+            System.out.println("Step " + step + ": Expand window");
+            System.out.println(" Window: [" + right + " ] = " + array[right]);
+            System.out.println(" Window: [" + left + "-" + right + "]");
+            System.out.println(" windowSum = " + windowSum);
+
+            // Shrink: Remove elements while conditions is satisfied
+            while (windowSum >= target) {
+                int currentLen = right - left + 1;
+                System.out.println(" Condition met! windowSum (" + windowSum + ") >= target (" + target + ")");
+                System.out.println(" Current window length: " + currentLen);
+
+                if (currentLen < minLen) {
+                    minLen = currentLen;
+                    System.out.println(" New min length found! minLen = " + minLen);
+                }
+
+                // Try to shrink
+                System.out.println(" Attempting to shrink... ");
+                System.out.println(" Remove array[ " + left + "] = " + array[left]);
+                windowSum -= array[left];
+                left++;
+                System.out.println("  New windowSum = " + windowSum);
+                System.out.println(" New window: [" + left + "-" + right + "]");
+            }
+
+            System.out.println();
+            step++;
+        }
+
+        int result = minLen == Integer.MAX_VALUE ? 0 : minLen;
+        System.out.println("Final Result: " + result);
+        return result;
+    }
+
     public static void main(String[] args) {
         // Example 1: Fixed window
         int[] array1 = { 2, 1, 5, 1, 3, 2 };
