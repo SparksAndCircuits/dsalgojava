@@ -118,13 +118,13 @@ public class TwoPointers {
         Arrays.sort(array);
         List<List<Integer>> result = new ArrayList<>();
 
-        for (int i = 0; i < array.length; i++) {
+        for (int i = 0; i < array.length - 2; i++) {
             // Skip duplicates for first element
-            if (i > 0 && array[i] == array[i + 1]) {
+            if (i > 0 && array[i] == array[i - 1]) {
                 continue;
             }
 
-            int left = i + 1, right = array.length + 1;
+            int left = i + 1, right = array.length - 1;
             int target = -array[i];
 
             System.out.println("\n Fix array[" + i + "]= " + array[i] + ", looking for pairs that sum to " + target);
@@ -348,9 +348,64 @@ public class TwoPointers {
         return array;
     }
 
+    // Advanced Pattern 7: Squaring the sorted array
+    // Squares of a sored array (Can have negatives)
+    public static int[] sortedSquares(int[] array) {
+        System.out.println("\n--- Advanced Pattern 7: Squares of sorted array");
+        System.out.println("Array: " + Arrays.toString(array));
+
+        int n = array.length;
+        int[] result = new int[n];
+        int left = 0, right = n - 1;
+        int pos = n - 1;
+
+        while (left <= right) {
+            int leftSquare = array[left] * array[left];
+            int rightSquare = array[right] * array[right];
+
+            if (leftSquare > rightSquare) {
+                result[pos] = leftSquare;
+                System.out.println("Place " + leftSquare + " at position " + pos);
+                left++;
+            } else {
+                result[pos] = rightSquare;
+                System.out.println("Place: " + rightSquare + " at position " + pos);
+                right--;
+            }
+
+            pos--;
+        }
+
+        System.out.println("Result " + Arrays.toString(result));
+        return result;
+    }
+
     public static void swap(int[] array, int i, int j) {
         int temp = array[i];
         array[i] = array[j];
         array[j] = temp;
+    }
+
+    public static void main(String[] args) {
+        System.out.println("TWO POINTERS: COMPLETE PATTERN DEMONSTRATION");
+        System.out.println("=".repeat(75));
+
+        // Core patterns
+        twoSumSorted(new int[] { 2, 7, 11, 15 }, 9);
+        removeDuplicates(new int[] { 1, 1, 2, 2, 3, 4, 4 });
+        sortColours(new int[] { 2, 0, 2, 1, 1, 0 });
+
+        System.out.println("\n" + "=".repeat(75));
+        System.out.println("ADVANCED PATTERNS");
+        System.out.println("=".repeat(75));
+
+        // Advanced patterns
+        threeSum(new int[] { -1, 0, 1, 2, -1, -4 });
+        mergeSortedArrays(new int[] { 1, 3, 5 }, new int[] { 2, 4, 6 });
+        isSubsequence("abc", "ahbgdc");
+        trapRainWater(new int[] { 0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1 });
+        backspaceCompare("ab#c", "ad#c");
+        sortByParity(new int[] { 3, 1, 2, 4 });
+        sortedSquares(new int[] { -4, -1, 0, 3, 10 });
     }
 }
