@@ -332,4 +332,128 @@ public class PrefixSum {
     }
 
     // Problem 7: xor queries
+    static class XORPrefixSum {
+        private int[] prefix;
+
+        public XORPrefixSum(int[] array) {
+            System.out.println("\nProblem 7: XOR Range Queries");
+            System.out.println("Array: " + Arrays.toString(array));
+            System.out.println("Binary Representation: ");
+            for (int i = 0; i < array.length; i++) {
+                System.out.println("Array[" + i + "] = " + array[i] + " = " + Integer.toBinaryString(i));
+            }
+
+            int n = array.length;
+            prefix = new int[n + 1];
+            prefix[0] = 0;
+
+            System.out.println("\nBuilding XOR prefix:");
+            for (int i = 0; i < n; i++) {
+                prefix[i + 1] = prefix[i] ^ array[i];
+                System.out.println("prefix[" + (i + 1) + "] = prefix[" + i + "] ^ array[" + i + "] = " + prefix[i]
+                        + " ^ " + array[i] + " = " + prefix[i + 1]);
+            }
+
+            System.out.println("\nXOR Prefix array: " + Arrays.toString(prefix));
+        }
+
+        public int rangeXOR(int left, int right) {
+            System.out.println("\nQuery: XOR from index: " + left + " to " + right);
+
+            int result = prefix[right + 1] ^ prefix[left];
+
+            System.out.println("prefix [" + (right + 1) + "] ^ prefix[" + left + "] = " + prefix[right + 1] + " ^ "
+                    + prefix[left] + " = " + result);
+            System.out.println("Binary: " + Integer.toBinaryString(prefix[right + 1]) + " ^ "
+                    + Integer.toBinaryString(prefix[left]) + " = " + Integer.toBinaryString(result));
+
+            return result;
+        }
+
+        public static void demonstrateXORPrefix() {
+            int[] array = { 4, 8, 12, 15, 7 };
+            XORPrefixSum xor = new XORPrefixSum(array);
+            xor.rangeXOR(1, 3); // XOR of [8, 12, 15]
+            xor.rangeXOR(0, 4); // XOR of entire array
+        }
+    }
+
+    // Problem 8: Subarray divisible by k
+    public static int subarraysDivisibleByK(int[] array, int k) {
+        System.out.println("\nProblem 8: Subarrays divisible by K");
+        System.out.println("Array: " + Arrays.toString(array));
+        System.out.println("k: " + k);
+        System.out.println("\nKey insight: if (prefix[j] - prefix[i]) % k == 0");
+        System.out.println("then prefix[j] % k == prefix[i] % k");
+
+        Map<Integer, Integer> remainderCount = new HashMap<>();
+        remainderCount.put(0, 1); // Empty prefix
+
+        int count = 0;
+        int currentSum = 0;
+
+        System.out.println("\nStep-by-step:");
+        for (int i = 0; i < array.length; i++) {
+            currentSum += array[i];
+
+            // Handle negative remainders
+            int remainder = ((currentSum % k) + k) % k;
+
+            System.out.println("\nIndex " + i + ": array[" + i + "] = " + array[i]);
+            System.out.println("Current sum = " + currentSum);
+            System.out.println("Remainder (mod" + k + ") = " + remainder);
+
+            if (remainderCount.containsKey(remainder)) {
+                int occurrences = remainderCount.get(remainder);
+                count += occurrences;
+                System.out.println("Found: " + occurrences + " previous prefix(es) with same remainder");
+                System.out.println("Total count now = " + count);
+            } else {
+                System.out.println("First time seeing a remainder: " + remainder);
+            }
+
+         
+        }
+           System.out.println("\nTotal subarrays divisible by " + k + " : " + count);
+            return count;
+    }
+
+    public static void demonstrateSubarrayDivisible() {
+        int[] array = { 4, 5, 0, -2, -3, 1 };
+        int k = 5;
+        subarraysDivisibleByK(array, k);
+    }
+
+    public static void main(String[] args) {
+        System.out.println("=".repeat(70));
+        System.out.println("Prefix sums: comprehensive code implementation");
+        System.out.println("=".repeat(70));
+
+                demonstrateRangeSumQuery();
+        
+        System.out.println("\n" + "=".repeat(70));
+        demonstrateSubarraySum();
+        
+        System.out.println("\n" + "=".repeat(70));
+        demonstrateContiguousArray();
+        
+        System.out.println("\n" + "=".repeat(70));
+        demonstrateProductExceptSelf();
+        
+        System.out.println("\n" + "=".repeat(70));
+        demonstrateRangeSumQuery();
+        
+        System.out.println("\n" + "=".repeat(70));
+        //demonstrate2DPrefixSum();
+        
+        System.out.println("\n" + "=".repeat(70));
+        //demonstrateXORPrefix();
+        
+        System.out.println("\n" + "=".repeat(70));
+        demonstrateSubarrayDivisible();
+        
+        System.out.println("\n" + "=".repeat(70));
+        System.out.println("ALL DEMONSTRATIONS COMPLETE!");
+        System.out.println("=".repeat(70));
+    }
 }
