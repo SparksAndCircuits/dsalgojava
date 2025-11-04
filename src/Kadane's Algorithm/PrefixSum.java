@@ -253,4 +253,83 @@ public class PrefixSum {
             rua.getArray();
         }
     }
+
+    // Problem 6: 2D Matrix Range Sum
+    static class Matrix2DPrefixSum {
+        private int[][] prefix;
+
+        public Matrix2DPrefixSum(int[][] matrix) {
+            System.out.println("\n---Problem 6: 2D matrix range sum");
+            System.out.println("Origninal matrix");
+            printMatrix(matrix);
+
+            int rows = matrix.length;
+            int cols = matrix[0].length;
+            prefix = new int[rows + 1][cols + 1];
+
+            System.out.println("\nBuilding 2D prefix sum");
+            for (int i = 1; i <= rows; i++) {
+                for (int j = 1; j <= cols; j++) {
+                    prefix[i][j] = matrix[i - 1][j - 1] + prefix[i - 1][j] + prefix[i][j - 1] - prefix[i - 1][j - 1];
+
+                    System.out.println("prefix[" + i + "][" + j + "] = " + "matrix[" + (i - 1) + "][" + (j - 1) + "] + "
+                            + "prefix[ " + (i - 1) + "][" + j + "] + " + "prefix[" + i + "][" + (j - 1) + "] - "
+                            + "prefix[" + (i - 1) + "][" + (j - 1) + "]");
+
+                    System.out.println("=" + matrix[i - 1][j - 1] + " + " + prefix[i - 1][j] + " + " + prefix[i][j - 1]
+                            + " - " + prefix[i - 1][j - 1] + " = " + prefix[i][j]);
+                }
+            }
+
+            System.out.println("\nPrefix sum matrix:");
+            printMatrix(prefix);
+        }
+
+        public int sumRegion(int row1, int col1, int row2, int col2) {
+            System.out.println("\n--- Query Region ---");
+            System.out.println("Sum from(" + row1 + "," + col1 + ") to (" + row2 + "," + col2 + ")");
+
+            int sum = prefix[row2 + 1][col2 + 1]
+                    - prefix[row1][col2 + 1]
+                    - prefix[row2 + 1][col1]
+                    + prefix[row1][col1];
+
+            System.out.println("Formula: prefix[" + (row2 + 1) + "][" + (col2 + 1) + "] - " +
+                    "Prefix[" + row1 + "][" + (col2 + 1) + "] - " +
+                    "Prefix[" + (row2 + 1) + "][" + col1 + "] + " +
+                    "prefix[" + row1 + "][" + col1 + "]");
+
+            System.out.println("=" + prefix[row2 + 1][col2 + 1] + " - " +
+                    prefix[row1][col2 + 1] + "-" + prefix[row2 + 1][col1] +
+                    " + " + prefix[row1][col1] + " = " + sum);
+
+            return sum;
+        }
+
+        public void printMatrix(int[][] matrix) {
+            for (int[] row : matrix) {
+                System.out.println(" ");
+                for (int val : row) {
+                    System.out.printf("%4d", val);
+                }
+
+                System.out.println();
+            }
+        }
+
+        public static void demonstrate2DPrefixSum() {
+            int[][] matrix = {
+                    { 3, 0, 1, 4, 2 },
+                    { 5, 6, 3, 2, 1 },
+                    { 1, 2, 0, 1, 5 },
+                    { 4, 1, 0, 1, 7 }
+            };
+
+            Matrix2DPrefixSum m2d = new Matrix2DPrefixSum(matrix);
+            m2d.sumRegion(1, 1, 2, 3); // sum of middle region
+            m2d.sumRegion(0, 0, 3, 4); // sum of entire matrix
+        }
+    }
+
+    // Problem 7: xor queries
 }
